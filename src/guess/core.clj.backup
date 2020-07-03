@@ -1,0 +1,84 @@
+(ns guess.core
+  (:gen-class))
+
+;(defn
+;    "return true if found, false otherwise"
+;    [ans goal] ; vectors of numbers
+;    (loop [x 0]
+;        (loop [y 0]
+;            (if (= (get ans x) (get goal y)) true (recur (inc y))))
+
+
+(defn ask-for-input
+    ""
+    [guesses max_value]
+    (println "\n\nGuess" guesses ", enter in four numbers between 0 and" max_value)
+    (vec (map #(- (int %) 48) (take 4 (str (read))))))
+
+
+(defn contains
+    "take two vectors and return true if the right side contains a value from
+    the left, false otherwise"
+    [guess answer] ; 1234 2234 will return true ; 5555 2234 will return false
+    (reduce #(or %1 (some? (some #{%2} answer))) false guess)
+)
+
+(defn build-answer "" [])
+
+;(defn exact-match
+;    "Take two vecetors and return true if there is an exact match"
+;    [guess answer]
+;    (doseq [x (range 4)] (= (get guess x) (get answer x))))
+
+(defn game_loop2
+    "main loop for game"
+    []
+    (def questions [])
+    (def game_on 1)
+    (def max_value 4)
+    (def goal [(rand-int max_value) (rand-int max_value) (rand-int max_value) (rand-int max_value)])
+
+    (loop [guesses 1]
+        (when (<= guesses 10)
+            (conj questions (ask-for-input guesses 4))
+            (def ans (last questions))
+            (println "before round" ans)
+            ;(if (= 0 (compare ans [53 72 57 68])) ; exit
+            ;    :nop
+            ;    (do (
+            ;        (println "continue")
+            ;    ))
+            ;)
+
+            (if (= ans goal)
+                (do
+                    (println "got it")
+                    ;(defx game_on)
+                    (def game_on 0))
+                (do
+                    ;(println "try again")
+                    (when (contains ans goal) "found")
+                    ;(when (exact-match ans goal) "match")
+                    (doseq [x (range 4)]
+                        (if (= (get ans x) (get goal x)) (println "match") :nop))
+                )
+            )
+            (println ans "vs" goal)
+            (recur (+ guesses 1) )
+        )
+    )
+)
+
+(defn game_loop
+    ""
+    []
+    (let [answer (build-answer 4)]
+        (print answer)))
+
+
+(defn -main
+    "guessing game"
+    [& args]
+    (println "guessing game")
+    (game_loop)
+)
