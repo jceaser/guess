@@ -17,6 +17,6 @@ jobs:
         - src:/src
       options: --cpus 1
     steps:
-      - run: clj-kondo --lint src
+      - run: clj-kondo --lint /src
         name: lint from container
 
