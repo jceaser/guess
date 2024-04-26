@@ -1,3 +1,7 @@
+name: Lint checks with kondo
+on:
+  push:
+    branches: [ main ]
 jobs:
   vm:
     steps:
@@ -5,7 +9,10 @@ jobs:
         name: Run on VM
   container:
     runs-on: ubuntu-latest
-    container: cljkondo/clj-condo
+    container:
+      image: cljkondo/clj-condo
+      volumns:
+        - src:/src
     steps:
       - run: clj-kondo --lint src
         name: lint from container
