@@ -8,10 +8,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          pwd
-          ls src
-          echo '---'
+          printf "pwd: $(pwd)\n"
+          ls
+          printf '---\n'
           ls /src
+          printf '---\n'
           docker run -v $PWD/src:/src --rm cljkondo/clj-kondo clj-kondo --lint src
         name: Run on VM
   container:
