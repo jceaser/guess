@@ -16,7 +16,7 @@ jobs:
               --rm cljkondo/clj-kondo \
               clj-kondo --parallel --lint src > report.log
       - name: report
-        uses: actions/upload-actifact@v4
+        uses: actions/upload-artifact@v4
         with:
           name: Kondo-Report.txt
           path: report.log
