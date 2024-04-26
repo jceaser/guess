@@ -13,8 +13,9 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: cljkondo/clj-condo
-      volumns:
+      volumes:
         - src:/src
+      options: --cpus 1
     steps:
       - run: clj-kondo --lint src
         name: lint from container
