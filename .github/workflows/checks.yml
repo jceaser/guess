@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          printf "pwd: $(pwd)\n"
+          pwd
           ls
           printf '---\n'
           ls /src
