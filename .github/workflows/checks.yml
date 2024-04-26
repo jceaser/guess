@@ -5,6 +5,7 @@ on:
     branches: [ main ]
 jobs:
   vm:
+    runs-on: ubuntu-latest
     steps:
       - run: echo runs directly
         name: Run on VM
