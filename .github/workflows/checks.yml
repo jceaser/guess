@@ -7,7 +7,12 @@ jobs:
   vm:
     runs-on: ubuntu-latest
     steps:
-      - run: docker run -v $PWD/src:/src --rm cljkondo/clj-kondo clj-kondo --lint src
+      - run: |
+          pwd
+          ls src
+          echo '---'
+          ls /src
+          docker run -v $PWD/src:/src --rm cljkondo/clj-kondo clj-kondo --lint src
         name: Run on VM
   container:
     runs-on: ubuntu-latest
