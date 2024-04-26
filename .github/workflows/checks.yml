@@ -12,7 +12,7 @@ jobs:
   container:
     runs-on: ubuntu-latest
     container:
-      image: cljkondo/clj-condo
+      image: cljkondo/clj-kondo
       volumes:
         - src:/src
       options: --cpus 1
