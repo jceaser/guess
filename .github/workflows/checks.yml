@@ -14,7 +14,7 @@ jobs:
     container:
       image: cljkondo/clj-kondo
       volumes:
-        - src:/src
+        - $PWD/src:/src
       options: --cpus 1
     steps:
       - name: show things
