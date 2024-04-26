@@ -10,10 +10,10 @@ jobs:
       - run: |
           pwd
           ls
-          printf '---\n'
+          echo '---'
           ls /src
-          printf '---\n'
-          docker run -v $PWD/src:/src --rm cljkondo/clj-kondo clj-kondo --lint src
+          echo '---'
+          docker run -v $PWD/src:/src --rm cljkondo/clj-kondo clj-kondo --lint /src
         name: Run on VM
   container:
     runs-on: ubuntu-latest
