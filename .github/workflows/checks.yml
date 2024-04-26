@@ -15,6 +15,9 @@ jobs:
               -v $PWD/src:/src \
               --rm cljkondo/clj-kondo \
               clj-kondo --parallel --lint src > report.log
+  vm2:
+    runs-on: ubuntu-latest
+    steps:
       - name: report
         uses: actions/upload-artifact@v4
         with:
