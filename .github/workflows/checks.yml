@@ -9,10 +9,17 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v4
-      - run: |
-          docker run -v $PWD/src:/src \
-              --rm cljkondo/clj-kondo clj-kondo --lint src
-        name: Run on VM
+      - name: Run Kondo Report
+        run: |
+          docker run \
+              -v $PWD/src:/src \
+              --rm cljkondo/clj-kondo \
+              clj-kondo --parallel --lint src > report.log
+      -name: report
+        uses: actions/upload-actifact@v4
+        with:
+          name: Kondo-Report.txt
+          path: report.log
   container:
     if: false
     runs-on: ubuntu-latest
