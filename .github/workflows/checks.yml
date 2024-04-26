@@ -1,0 +1,12 @@
+jobs:
+  vm:
+    steps:
+      - run: echo runs directly
+        name: Run on VM
+  container:
+    runs-on: ubuntu-latest
+    container: cljkondo/clj-condo
+    steps:
+      - run: clj-kondo --lint src
+        name: lint from container
+
