@@ -15,7 +15,7 @@ jobs:
               -v $PWD/src:/src \
               --rm cljkondo/clj-kondo \
               clj-kondo --parallel --lint src > report.log
-      -name: report
+      - name: report
         uses: actions/upload-actifact@v4
         with:
           name: Kondo-Report.txt
