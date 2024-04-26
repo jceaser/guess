@@ -10,12 +10,8 @@ jobs:
       - name: checkout
         uses: actions/checkout@v4
       - run: |
-          pwd
-          ls
-          echo '---'
-          #ls /
-          #echo '---'
-          docker run -v $PWD/src:/src --rm cljkondo/clj-kondo clj-kondo --lint src
+          docker run -v $PWD/src:/src \
+              --rm cljkondo/clj-kondo clj-kondo --lint src
         name: Run on VM
   container:
     if: false
