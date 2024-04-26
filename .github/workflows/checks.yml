@@ -17,6 +17,8 @@ jobs:
         - src:/src
       options: --cpus 1
     steps:
+      - name: show things
+        run: pwd ; ls -la
       - run: clj-kondo --lint /src
         name: lint from container
 
