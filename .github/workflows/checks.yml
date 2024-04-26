@@ -15,7 +15,7 @@ jobs:
           echo '---'
           #ls /
           #echo '---'
-          docker run -v $PWD/src:/src --rm cljkondo/clj-kondo clj-kondo --lint /src
+          docker run -v $PWD/src:/src --rm cljkondo/clj-kondo clj-kondo --lint src
         name: Run on VM
   container:
     runs-on: ubuntu-latest
