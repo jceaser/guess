@@ -11,7 +11,7 @@ jobs:
           pwd
           ls
           echo '---'
-          ls /src
+          ls /
           echo '---'
           docker run -v $PWD/src:/src --rm cljkondo/clj-kondo clj-kondo --lint /src
         name: Run on VM
