@@ -18,6 +18,7 @@ jobs:
           docker run -v $PWD/src:/src --rm cljkondo/clj-kondo clj-kondo --lint src
         name: Run on VM
   container:
+    if: false
     runs-on: ubuntu-latest
     container:
       image: cljkondo/clj-kondo
