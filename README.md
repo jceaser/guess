@@ -14,7 +14,7 @@ FIXME: explanation
 
 ## Options
 
-test 2 
+test 3
 
 ## Examples
 
